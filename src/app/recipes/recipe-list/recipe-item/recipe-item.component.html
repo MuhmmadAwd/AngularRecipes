@@ -1,9 +1,18 @@
-<a [routerLink]="[index]" class="d-flex justify-content-between list-group-item" >
-    <div>
-        <h4 class="">{{recipe.name}}</h4>
-        <p class="">{{recipe.description}}</p>
-    </div>
-    <span>
-        <img [src]="recipe.imagePath" [alt]="recipe.name" class="img-fluid" style="max-height: 50px;">
-    </span>
+<a
+  [routerLink]="[index]"
+  routerLinkActive="active"
+  class="d-flex justify-content-between list-group-item"
+>
+  <div>
+    <h4 class="">{{ recipe.name }}</h4>
+    <p class="">{{ recipe.description }}</p>
+  </div>
+  <span>
+    <img
+      [src]="recipe.imagePath"
+      [alt]="recipe.name"
+      class="img-fluid"
+      style="max-height: 50px"
+    />
+  </span>
 </a>
