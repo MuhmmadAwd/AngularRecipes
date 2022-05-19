@@ -7,8 +7,5 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'RecipeProject';
-  route:string;
-  onNavigate(Route:string){
-    this.route=Route
-  }
+
 }
