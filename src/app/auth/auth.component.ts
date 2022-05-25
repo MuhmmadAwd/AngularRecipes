@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { AuthService } from './auth.service';
+import { Observable } from 'rxjs';
+import { AuthResData, AuthService } from './auth.service';
 
 @Component({
   selector: 'app-auth',
@@ -12,7 +13,7 @@ export class AuthComponent implements OnInit {
 
   isLoginMode = true;
   isLoading = false;
-  error:string = null;
+  error: string = null;
 
   onSwitchMode() {
     this.isLoginMode = !this.isLoginMode;
@@ -22,24 +23,32 @@ export class AuthComponent implements OnInit {
     const email = form.value.email;
     const password = form.value.password;
     this.isLoading = true;
+
+    let authObs: Observable<AuthResData>;
+
     if (this.isLoginMode) {
+      authObs = this.authService.login(email, password);
     } else {
-      this.authService.signup(email, password).subscribe(
-        (resData) => {
-          console.log(resData);
-          this.isLoading = false;
-        },
-        (errorRes) => {
-          console.log(errorRes);
-          if(errorRes.error.error.message == "EMAIL_EXISTS"){
-            this.error = "this email exists already! try another one"
-          }else{
-            this.error = "there an unknown error"
-          }
-          this.isLoading = false;
-        }
-      );
+      authObs = this.authService.signup(email, password);
     }
+    authObs.subscribe(
+      (resData) => {
+        console.log(resData);
+        this.isLoading = false;
+      },
+      (errorRes) => {
+        console.log(errorRes);
+        this.isLoading = false;
+        if (errorRes.error.error.message == 'EMAIL_EXISTS') {
+          this.error = 'this email exists already! try another one';
+        } else if (errorRes.error.error.message == 'EMAIL_NOT_FOUND') {
+          this.error = 'this email not found! try again';
+        } else {
+          this.error = 'there an unknown error';
+        }
+      }
+    );
+    this.isLoading = false;
     form.reset();
   }
 
