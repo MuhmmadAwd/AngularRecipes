@@ -10,8 +10,8 @@
         <input type="password" id="password" class="form-control" />
       </div>
       <div class="py-2">
-        <button class="btn btn-primary me-2">Sign Up</button>
-        <button class="btn btn-primary">Switch to Login</button>
+        <button class="btn btn-primary me-2">{{isLoginMode ? "Login" : "SignUp"}}</button>
+        <button class="btn btn-primary" (click)="onSwitchMode()">Switch to {{!isLoginMode ? "Login" : "SignUp"}}</button>
       </div>
     </form>
   </div>
