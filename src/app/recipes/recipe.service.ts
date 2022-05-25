@@ -10,7 +10,7 @@ import { Recipe } from './recipe.model';
 export class RecipeService {
   constructor(public _shoppingListService: ShoppingListService) {}
 
-  recipeChanged = new Subject<Recipe[]>()
+  recipeChanged = new Subject<Recipe[]>();
 
   private recipes: Recipe[] = [
     new Recipe(
@@ -27,6 +27,12 @@ export class RecipeService {
     ),
   ];
 
+  setRecipes(recipes: Recipe[]) {
+    this.recipes = recipes;
+    this.recipeChanged.next(this.recipes.slice());
+
+  }
+
   public getRecipes() {
     return this.recipes.slice();
   }
@@ -38,16 +44,16 @@ export class RecipeService {
   }
   addRecipe(recipe: Recipe) {
     this.recipes.push(recipe);
-    this.recipeChanged.next(this.recipes.slice())
+    this.recipeChanged.next(this.recipes.slice());
   }
 
   updateRecipe(index: number, newRecipe: Recipe) {
     this.recipes[index] = newRecipe;
-    this.recipeChanged.next(this.recipes.slice())
+    this.recipeChanged.next(this.recipes.slice());
   }
 
-  deleteRecipe(index:number) {
-    this.recipes.splice(index,1);
-    this.recipeChanged.next(this.recipes.slice())
+  deleteRecipe(index: number) {
+    this.recipes.splice(index, 1);
+    this.recipeChanged.next(this.recipes.slice());
   }
 }
