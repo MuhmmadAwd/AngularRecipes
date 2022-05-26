@@ -20,7 +20,7 @@
         <li class="nav-item">
           <a class="nav-link" routerLink="/shopping-list">shopping List</a>
         </li>
-        <li class="nav-item active" *ngIf="isAuthenticated">
+        <li class="nav-item active" *ngIf="!isAuthenticated">
           <a class="nav-link" routerLink="/auth">Login/SignUp</a>
         </li>
       </ul>

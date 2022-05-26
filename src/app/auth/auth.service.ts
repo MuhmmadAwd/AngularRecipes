@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Subject, tap } from 'rxjs';
+import { environment } from 'src/environments/environment';
 import { User } from './user.model';
 
 export interface AuthResData {
@@ -25,7 +26,7 @@ export class AuthService {
   signup(email: string, password: string) {
     return this.http
       .post<AuthResData>(
-        'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyDdTJ76CELlVKhN8nR_oGYIg9nOUtR6kbw',
+        `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${environment.firebaseKey}`,
         {
           email: email,
           password: password,
@@ -47,7 +48,7 @@ export class AuthService {
   login(email: string, password: string) {
     return this.http
       .post<AuthResData>(
-        'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyDdTJ76CELlVKhN8nR_oGYIg9nOUtR6kbw',
+        `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${environment.firebaseKey}`,
         {
           email: email,
           password: password,
