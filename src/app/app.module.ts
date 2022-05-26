@@ -11,6 +11,7 @@ import { DropdownDirective } from './shared/dropdown.directive';
 import { AuthComponent } from './auth/auth.component';
 import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
 import { AuthInterceptorService } from './auth/auth-interceptor.service';
+import { RecipeDetailComponent } from './recipes/recipe-detail/recipe-detail.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,8 @@ import { AuthInterceptorService } from './auth/auth-interceptor.service';
     DropdownDirective,
     AuthComponent,
     LoadingSpinnerComponent,
+    RecipeDetailComponent,
+
   ],
   imports: [
     BrowserModule,
