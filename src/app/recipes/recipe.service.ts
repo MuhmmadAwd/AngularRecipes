@@ -12,20 +12,27 @@ export class RecipeService {
 
   recipeChanged = new Subject<Recipe[]>();
 
-  private recipes: Recipe[] = [
+    private recipes: Recipe[] = [
     new Recipe(
-      'nameTest',
-      'descTest',
-      'https://upload.wikimedia.org/wikipedia/commons/3/39/Recipe.jpg',
-      [new Ingredient('egg', 5), new Ingredient('meat', 3)]
+      'Tasty Schnitzel',
+      'A super-tasty Schnitzel - just awesome!',
+      'https://upload.wikimedia.org/wikipedia/commons/7/72/Schnitzel.JPG',
+      [new Ingredient('Meat', 1), new Ingredient('French Fries', 20)]
     ),
     new Recipe(
-      '2nameTest',
-      '2descTest',
+      'Big Fat Burger',
+      'What else you need to say?',
+      'https://upload.wikimedia.org/wikipedia/commons/b/be/Burger_King_Angus_Bacon_%26_Cheese_Steak_Burger.jpg',
+      [new Ingredient('Buns', 2), new Ingredient('Meat', 1)]
+    ),    
+    new Recipe(
+      'tasty sea food',
+      'A super-tasty sea food - just awesome!',
       'https://upload.wikimedia.org/wikipedia/commons/3/39/Recipe.jpg',
-      [new Ingredient('buns', 1), new Ingredient('fries', 20)]
-    ),
+      [new Ingredient('fish', 6), new Ingredient('salad', 2)]
+    )
   ];
+
 
   setRecipes(recipes: Recipe[]) {
     this.recipes = recipes;
