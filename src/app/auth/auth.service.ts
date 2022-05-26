@@ -65,6 +65,10 @@ export class AuthService {
       );
   }
 
+  logout(){
+    this.user.next(null)
+  }
+
   private handleAuthentication(
     email: string,
     userId: string,
