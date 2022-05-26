@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Subject, tap } from 'rxjs';
-import { environment } from 'src/environments/environment';
+import { environment } from 'src/environments/environment.prod';
 import { User } from './user.model';
 
 export interface AuthResData {
@@ -59,7 +59,7 @@ export class AuthService {
         tap((resData) => {
           this.handleAuthentication(
             resData.email,
-            resData.localId,
+            resData.localId, 
             resData.idToken,
             +resData.expiresIn
           );
