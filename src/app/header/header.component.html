@@ -14,14 +14,14 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mt-2 mt-lg-0">
-        <li class="nav-item active" *ngIf="!isAuthenticated">
-          <a class="nav-link" routerLink="/recipes">Recipes</a>
-        </li>
         <li class="nav-item active" *ngIf="isAuthenticated">
-          <a class="nav-link" routerLink="/auth">Login/SignUp</a>
+          <a class="nav-link" routerLink="/recipes">Recipes</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" routerLink="/shopping-list">shopping List</a>
+        </li>
+        <li class="nav-item active" *ngIf="isAuthenticated">
+          <a class="nav-link" routerLink="/auth">Login/SignUp</a>
         </li>
       </ul>
       <ul class="navbar navbar-nav me-3">

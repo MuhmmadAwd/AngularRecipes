@@ -34,13 +34,11 @@ export class AuthComponent implements OnInit {
     }
     authObs.subscribe(
       (resData) => {
-        console.log(resData);
         this.isLoading = false;
         this.router.navigate(["/recipes"])
       },
       (errorRes) => {
         console.log(errorRes);
-        this.isLoading = false;
         if (errorRes.error.error.message == 'EMAIL_EXISTS') {
           this.error = 'this email exists already! try another one';
         } else if (errorRes.error.error.message == 'EMAIL_NOT_FOUND') {
@@ -48,6 +46,7 @@ export class AuthComponent implements OnInit {
         } else {
           this.error = 'there an unknown error';
         }
+        this.isLoading = false;
       }
     );
     form.reset();

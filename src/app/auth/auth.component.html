@@ -1,7 +1,7 @@
 <div class="row">
-  <div class="col-md-6 col-md-offset-3">
+  <div class="centerClass col-md-6">
     <div class="alert alert-danger" *ngIf="error">{{error}}</div>
-      <div *ngIf="isLoading">
+      <div *ngIf="isLoading && !error">
           <app-loading-spinner></app-loading-spinner>
       </div>
     <form (ngSubmit)="OnSubmit(authForm)" #authForm="ngForm" *ngIf="!isLoading">
@@ -32,3 +32,4 @@
     </form>
   </div>
 </div>
+
